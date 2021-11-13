@@ -1,27 +1,20 @@
 import { useEffect } from "react";
 
 function Letter(props) {
-    const {letter} = props;
+    const {letter, onLetterKeyPress} = props;
 
     useEffect(() => {
-
-        // function selectRandomLetter() {
-        //     var randomInt = Math.floor(Math.random() * letterMappings.length); //26            
-        //     setActiveLetter(letterMappings[randomInt]);
-        // }
-
-        // selectRandomLetter();
+        function letterKeyPress(e) {
+            console.log(e.key);
+            onLetterKeyPress(e.key);
+        }
 
         document.addEventListener("keydown", letterKeyPress, false);        
 
         return () => {
             document.removeEventListener("keydown", letterKeyPress, false);
         }
-    }, []);
-
-    function letterKeyPress(e) {
-        console.log(e.key);
-    }
+    }, [onLetterKeyPress]);
 
     return (
         <div>

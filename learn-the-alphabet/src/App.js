@@ -41,6 +41,7 @@ const letterMappings = [
 
 function App() {
     const [activeLetter, setActiveLetter] = useState('');
+    const [pressedLetter, setPressedLetter] = useState('');
 
     useEffect(() =>{
       function selectRandomLetter() {
@@ -49,13 +50,25 @@ function App() {
             setActiveLetter(letterMappings[randomInt]);
         }
         selectRandomLetter();
-    }, [])
+    }, []);
+
+    function declarePressedLetter(key) {
+      setPressedLetter(key);
+    }
 
   return (
     <Container fluid="md">     
       <Row>
+        <Col>Header</Col>
+      </Row>
+      <Row>
         <Col>Left</Col>
-        <Col><Letter letter={activeLetter} /></Col>
+        <Col><Letter letter={activeLetter} onLetterKeyPress={key=> declarePressedLetter(key)} /></Col>
+        <Col>Right</Col>
+      </Row>
+      <Row>
+        <Col>Left</Col>
+        <Col>You entered: {pressedLetter}</Col>
         <Col>Right</Col>
       </Row>
     </Container>
