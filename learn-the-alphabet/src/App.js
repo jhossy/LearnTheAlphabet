@@ -59,7 +59,7 @@ function App() {
   return (
     <Container fluid="md">     
       <Row>
-        <Col>Header</Col>
+        <Col><h1>Lær alfabetet</h1></Col>
       </Row>
       <Row>
         <Col>Left</Col>
