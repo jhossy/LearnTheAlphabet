@@ -1,4 +1,9 @@
-.App {
+html, body {  
+  min-height: 100%;
+}
+
+.app {
+  background-color: #bbeffd;
   text-align: center;
 }
 
@@ -11,8 +16,8 @@
 .row > .col {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  background-color: #bbeffd;
-  border: 1px solid #61dafb;
+  /* background-color: #bbeffd; */
+  /* border: 1px solid #61dafb; */
 }
 
 .App-link {

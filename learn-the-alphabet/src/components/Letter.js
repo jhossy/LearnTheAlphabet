@@ -5,7 +5,7 @@ function Letter(props) {
 
     useEffect(() => {
         function letterKeyPress(e) {
-            console.log(e.key);
+            // console.log(e.key);
             onLetterKeyPress(e.key);
         }
 
@@ -17,9 +17,9 @@ function Letter(props) {
     }, [onLetterKeyPress]);
 
     return (
-        <div>
-            <div>
-                <img src={letter.path} alt="Letter to guess" />
+        <div className="container">
+            <div className="row s12 center-align">
+                <h1>{letter.char}</h1>
             </div>
         </div>
     );
