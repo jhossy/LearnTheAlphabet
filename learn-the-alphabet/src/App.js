@@ -39,10 +39,11 @@ const letterMappings = [
 function App() {
     const [activeLetter, setActiveLetter] = useState('');
     const [pressedLetter, setPressedLetter] = useState('');
-
+    
     let [noOfKeyboardEvents, setNoOfKeyboardEvents] = useState(0);
     let [noOfCorrect, setNoOfCorrect] = useState(0);
     let [noOfIncorrect, setNoOfIncorrect] = useState(0);
+    let [history, setHistory] = useState([]);
 
     useEffect(() =>{      
         selectRandomLetter();
@@ -55,6 +56,8 @@ function App() {
     }
 
     function declarePressedLetter(key) {
+      setHistory(history => [...history, key]);
+
       setPressedLetter(key);
 
       setNoOfKeyboardEvents(noOfKeyboardEvents + 1);
@@ -73,13 +76,13 @@ function App() {
     <div className="app container">     
       <div className="row">
         <div className="col s12 m4 l2"></div>
-        <div className="col s12 m4 l8 center-align"><h1>{constants.HEADER_LABEL_DK}</h1></div>
+        <div className="col s12 m4 l8 center-align"><h1>{constants.HEADER_LABEL}</h1></div>
         <div className="col s12 m4 l2"><Stats noOfKeyboardEvents={noOfKeyboardEvents} noOfCorrect={noOfCorrect} noOfIncorrect={noOfIncorrect}/></div>
       </div>
-      <div className="row">
-        <div className="col s12 m4 l2"></div>
+      <div className="row content-row">
+        <div className="col s12 m4 l2 history"><h5>{constants.HISTORY}:</h5>{history}</div>
         <div className="col s12 m4 l8"><Letter letter={activeLetter} onLetterKeyPress={key=> declarePressedLetter(key)} /></div>
-        <div className="col s12 m4 l2">{constants.YOU_ENTERED_DK}:<h1>{pressedLetter}</h1></div>
+        <div className="col s12 m4 l2"><h5>{constants.YOU_ENTERED}:</h5><h1>{pressedLetter}</h1></div>
       </div>
       <div className="row">
         <div className="col s12">&copy; J. Hossy</div>
