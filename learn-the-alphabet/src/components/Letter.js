@@ -18,8 +18,8 @@ function Letter(props) {
 
     return (
         <div className="container">
-            <div className="row s12 center-align">
-                <h1>{letter.char}</h1>
+            <div className="row s12 center-align puzzle-letter">
+                {letter.char}
             </div>
         </div>
     );

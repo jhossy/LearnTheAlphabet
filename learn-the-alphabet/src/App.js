@@ -1,6 +1,7 @@
 import './App.css';
 import Letter from './components/letter';
 import Stats from './components/stats';
+import Navigation from './components/navigation'
 import { useEffect, useState } from 'react';
 import * as constants from './components/constants';
 
@@ -73,19 +74,22 @@ function App() {
     }
 
   return (
-    <div className="app container">     
+    <div className="app container">      
       <div className="row">
-        <div className="col s12 m4 l2"></div>
-        <div className="col s12 m4 l8 center-align"><h1>{constants.HEADER_LABEL}</h1></div>
-        <div className="col s12 m4 l2"><Stats noOfKeyboardEvents={noOfKeyboardEvents} noOfCorrect={noOfCorrect} noOfIncorrect={noOfIncorrect}/></div>
+        <Navigation />
       </div>
-      <div className="row content-row">
-        <div className="col s12 m4 l2 history"><h5>{constants.HISTORY}:</h5>{history}</div>
-        <div className="col s12 m4 l8"><Letter letter={activeLetter} onLetterKeyPress={key=> declarePressedLetter(key)} /></div>
-        <div className="col s12 m4 l2"><h5>{constants.YOU_ENTERED}:</h5><h1>{pressedLetter}</h1></div>
+      <div className="row flex">
+        <div className="col grid s12 m4 l2 blue lighten-5"></div>
+        <div className="col grid s12 m4 l8 blue lighten-5"><Letter letter={activeLetter} onLetterKeyPress={key=> declarePressedLetter(key)} /></div>
+        <div className="col grid s12 m4 l2 blue lighten-5"><h5>{constants.YOU_ENTERED}:</h5><h1>{pressedLetter}</h1></div>
+      </div>      
+      <div className="row flex">
+        <div className="col grid s12 m4 l2 blue lighten-5"></div>
+        <div className="col grid s12 m4 l8 history blue lighten-5"><h5>{constants.HISTORY}:</h5>{history}</div>
+        <div className="col grid s12 m4 l2 blue lighten-5"><Stats noOfKeyboardEvents={noOfKeyboardEvents} noOfCorrect={noOfCorrect} noOfIncorrect={noOfIncorrect}/></div>
       </div>
       <div className="row">
-        <div className="col s12">&copy; J. Hossy</div>
+        <div className="col s12 blue lighten-5">&copy; J. Hossy</div>
       </div>
     </div>
   );
